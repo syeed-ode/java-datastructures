@@ -3,10 +3,7 @@
  */
 package com.syeedode.datastructures.linkedlist.a_printlinklist;
 
-import com.syeedode.datastructures.linkedlist.LinkedListBuilder;
 import com.syeedode.datastructures.linkedlist.Node;
-
-import java.util.Arrays;
 
 public class LinkedListMain {
 

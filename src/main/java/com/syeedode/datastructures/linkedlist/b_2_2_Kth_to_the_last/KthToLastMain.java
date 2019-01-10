@@ -1,12 +1,8 @@
-package com.syeedode.datastructures.linkedlist.b_2_1_duplicateremover;
+package com.syeedode.datastructures.linkedlist.b_2_2_Kth_to_the_last;
 
 import com.syeedode.datastructures.linkedlist.Node;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class LinkedListDuplicateMain {
-
+public class KthToLastMain {
 
     public static void main(String [] args) {
         /**
@@ -20,11 +16,8 @@ public class LinkedListDuplicateMain {
         linkListNode.appendToTail(1);
         linkListNode.appendToTail(3);
         linkListNode.appendToTail(10);
-
-        linkListNode.printList();
-        System.out.println("Removing duplicates");
-        linkListNode = new DuplicateDeletor().removeDupFromWebsite(linkListNode);
         linkListNode.printList();
 
+        new KthToTheLastComputer().printKthToTheLast(linkListNode, 3);
     }
 }
