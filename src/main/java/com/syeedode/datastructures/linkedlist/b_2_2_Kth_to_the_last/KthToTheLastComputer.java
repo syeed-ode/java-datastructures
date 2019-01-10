@@ -32,4 +32,33 @@ public class KthToTheLastComputer {
         }
         return index;
     }
+
+
+    /**
+     * By utilizing a class, we can mimic passing by
+     * reference. This has a space of O(n).
+     * The time is O(1).
+     */
+    public class Index {
+        public int indexValue = 0;
+    }
+
+    public Node printKthToTheLastUsingWrapperClass(Node head, int k) {
+        Index idx = new Index();
+        return printKthToTheLastUsingWrapperClass(head, k, idx);
+    }
+
+    private Node printKthToTheLastUsingWrapperClass(Node head, int k, Index index) {
+        if(head == null) {
+            return null;
+        }
+
+        Node node = printKthToTheLastUsingWrapperClass(head.next, k, index);
+        index.indexValue = index.indexValue + 1;
+        if(index.indexValue == k) {
+            return head;
+        }
+
+        return node;
+    }
 }
