@@ -2,9 +2,10 @@ package com.syeedode.datastructures.linkedlist.b_2_1_duplicateremover;
 
 import com.syeedode.datastructures.linkedlist.Node;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 /**
  * 2.1 Remove Dups
@@ -14,19 +15,35 @@ import java.util.Set;
 
 public class DuplicateDeletor {
 
-    public Node deleteDuplicates(Node n) {
-        Set<Integer> buffer = new HashSet<>();
-        Node previous = null;
-        while(Objects.nonNull(n)) {
-            if(buffer.contains(n.data)) {
-                previous = n.next;
-            } else {
-                buffer.add(n.data);
-                previous = n;
-            }
-            n = n.next;
-
+    /**
+     * This method (using a buffer) runs in
+     * O(N) time. There is only one loop.
+     *
+     * @param head
+     * @return
+     */
+    public Node removeDupFromWebsite(Node head){
+        Set<Integer> ht = new HashSet<Integer>();
+        if(head==null){
+            return null;
         }
-        return previous;
+        Node currNode = head.next;
+        Node prevNode = head;
+        Node temp; // keeping it so that last node would be eligible for garbage collection
+        ht.add(head.data);
+        while(currNode!=null){
+            int data = currNode.data;
+            if(ht.contains(data)){
+                prevNode.next = currNode.next;
+                temp= currNode;
+                currNode = currNode.next;
+                temp.next = null;
+            }else{
+                ht.add(data);
+                prevNode = currNode;
+                currNode = currNode.next;
+            }
+        }
+        return head;
     }
 }
